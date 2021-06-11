@@ -1,0 +1,12 @@
+.importantFriend {
+    display: inline-block;
+    text-align: center;
+    padding: 2px 7px;
+    margin-bottom: 5px;
+}
+
+.importantFriend img {
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+}

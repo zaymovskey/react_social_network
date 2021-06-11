@@ -1,0 +1,25 @@
+.dialogCard {
+    display: flex;
+    padding: 5px;
+    color: #2e2828;
+    transition: 0.1s;
+    overflow-wrap: anywhere;
+}
+.dialogCard:hover {
+    background-color: rgba(0,0,0,0.1); opacity:0.9;
+}
+.dialogCard img {
+    display: block;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+.dialogCard span {
+    display: block;
+}
+
+.dialogCard .message {
+    color: #828282;
+}

@@ -1,0 +1,5 @@
+.dialogsNav {
+    width: 40%;
+    border-right: 2px solid #d9d3d3;
+    overflow-y: scroll;
+}

@@ -1,0 +1,8 @@
+.dialogsWrap {
+    display: flex;
+    height: 79vh;
+}
+
+.dialogsWrapper {
+    height: 100%;
+}

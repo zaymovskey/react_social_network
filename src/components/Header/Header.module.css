@@ -1,0 +1,20 @@
+.header {
+    background-color: #84588d;
+    grid-column: span 5;
+    position: fixed;
+    height: 50px;
+    z-index: 1;
+    width: 100%;
+    line-height: 50px;
+    display: grid;
+    grid-template-columns: repeat(2, 0.6fr) 3fr repeat(2, 0.5fr);
+}
+
+.header a {
+    color: white;
+}
+
+.loginBlock {
+    grid-column: 5/5;
+    font-weight: 600;
+}

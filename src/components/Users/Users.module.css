@@ -1,0 +1,48 @@
+.item {
+    display: flex;
+    padding: 10px;
+    border-bottom: 2px solid #d9d3d3;
+}
+
+.image img {
+    border-radius: 100%;
+    margin-right: 15px;
+    height: 90px;
+    width: 90px;
+    object-fit: cover;
+}
+
+.info {
+    flex-grow: 1;
+}
+
+.location {
+    color: #828282;
+}
+
+.follow {
+    flex-basis: 140px;
+}
+.toggleFollow button {
+    width: 100%;
+}
+
+.paginationWrapper {
+    display: flex;
+    margin-top: 10px;
+    flex-wrap: wrap;
+    height: 40px;
+    overflow: auto;
+    justify-content: center;
+}
+
+.paginationItem {
+    margin: 0 1px;
+    transition: 0.2s;
+}
+
+.paginationItemActive {
+    font-size: 25px;
+    margin: 0 1px;
+    background-color: #7c4986;
+}

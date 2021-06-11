@@ -1,0 +1,19 @@
+.dialogWrap {
+    width: 60%;
+    padding-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.addMessageWrap {
+    display: flex;
+}
+
+.dialog {
+    overflow-y: scroll;
+    padding: 15px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}

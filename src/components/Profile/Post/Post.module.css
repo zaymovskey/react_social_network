@@ -1,0 +1,40 @@
+.post {
+    display: flex;
+    padding: 10px;
+}
+
+.post img {
+    height: 70px;
+    width: 70px;
+    object-fit: cover;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
+.createdDate {
+    color: #898686;
+    font-weight: 300;
+}
+
+.nameBlock {
+    margin-bottom: 10px;
+}
+
+.postContentBlock {
+    flex-grow: 1;
+}
+
+.delete {
+    display: inline-block;
+    float: right;
+    font-weight: 600;
+    font-size: 20px;
+    color: #aaa3a3;
+}
+.delete:hover {
+    cursor: pointer;
+}
+
+.postText {
+    word-break: break-all;
+}

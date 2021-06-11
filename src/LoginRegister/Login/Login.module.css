@@ -1,0 +1,23 @@
+.loginWrapper {
+    text-align: center;
+}
+
+.input {
+    width: 99%;
+    border: 1px solid #ba87c4;
+    margin-bottom: 20px;
+    border-radius: 3px;
+}
+
+.section {
+    width: 450px;
+    display: inline-block;
+}
+
+.form {
+    padding: 10px 40px;
+}
+
+.button {
+    width: 100%;
+}

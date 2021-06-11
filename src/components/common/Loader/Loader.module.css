@@ -1,0 +1,26 @@
+.loaderWrapper {
+    text-align: center;
+}
+
+.ldsDualRing {
+    display: inline-block;
+}
+.ldsDualRing:after {
+    content: " ";
+    display: block;
+    width: 150px;
+    height: 150px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid #fff;
+    border-color: #84588d transparent #84588d transparent;
+    animation: ldsDualRing 1.2s linear infinite;
+}
+@keyframes ldsDualRing {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
