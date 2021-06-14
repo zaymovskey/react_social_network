@@ -27,6 +27,7 @@ const Post = (props) => {
                         <div className={styles.createdDate}>{day + '.' + month + '.' + year + ' ' + hours + ':' + minutes}</div>
                     </div>
                     <div className={styles.postText}>{props.post.text}</div>
+                    <div onClick={() => (props.like(props.post.id))} className={props.post.liked? styles.liked : styles.likes}>{props.post.total_likes}❤</div>
                 </div>
 
             </div>

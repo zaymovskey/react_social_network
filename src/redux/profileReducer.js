@@ -6,6 +6,7 @@ const UPDATE_POST_BODY = 'UPDATE_POST_BODY';
 const UPDATE_PROFILE_STATUS = 'UPDATE_PROFILE_STATUS';
 const SET_POSTS = 'SET_POSTS';
 const REMOVE_POST = 'REMOVE_POST';
+const LIKE_UNLIKE = 'LIKE_UNLIKE';
 
 let initialState = {
     profile: null,
@@ -20,9 +21,7 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 posts: [...state.posts,
                     {
-                        id: action.postData.id,
-                        text: action.postData.text,
-                        created_date: action.postData.created_date
+                        ...action.postData
                     }],
                 postBody: ''
             };
@@ -56,6 +55,24 @@ const profileReducer = (state = initialState, action) => {
                 posts: state.posts.filter(post => post.id !== action.postId)
             };
 
+        case LIKE_UNLIKE:
+            return {
+                ...state,
+                posts: state.posts.map(post => {
+                    if (post.id === action.postId) {
+                        if (action.action) {
+                            post.liked = true;
+                            post.total_likes += 1;
+                            return post
+                        }
+                        post.liked = false;
+                        post.total_likes -= 1;
+                        return post
+                    }
+                    return post
+                })
+            };
+
         default:
             return state
     }
@@ -68,6 +85,7 @@ export const updatePostBody = (body) => ({type: UPDATE_POST_BODY, body: body});
 export const updateStatus = (status) => ({type: UPDATE_PROFILE_STATUS, status: status});
 export const setPosts = (posts) => ({type: SET_POSTS, posts: posts});
 export const removePost = (postId) => ({type: REMOVE_POST, postId: postId});
+export const likeUnlike = (postId, action) => ({type: LIKE_UNLIKE, action: action, postId: postId});
 
 // Thunk Creators
 export const getProfile = (userId) => (dispatch => {
@@ -99,6 +117,12 @@ export const deletePost = (postId) => (dispatch => {
         dispatch(removePost(postId))
     }).catch(error => {
         console.log(error)
+    })
+});
+
+export const like = (postId) => (dispatch => {
+    profileAPI.like(postId).then(response => {
+        dispatch(likeUnlike(postId, response.data))
     })
 });
 

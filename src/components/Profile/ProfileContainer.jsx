@@ -8,7 +8,8 @@ import {
     getProfile,
     updatePostBody,
     updateProfileStatus,
-    getProfilePosts
+    getProfilePosts,
+    like
 } from "../../redux/profileReducer";
 import {compose} from "redux";
 
@@ -50,7 +51,8 @@ export default compose(
         updateProfileStatus,
         getProfilePosts,
         createPost,
-        deletePost
+        deletePost,
+        like
     }),
     withRouter
 )(ProfileContainer)

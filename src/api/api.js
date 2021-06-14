@@ -4,7 +4,12 @@ const instance = axios.create({
     baseURL: 'http://127.0.0.1:8000/api/v1/'
 });
 
-const getAuthTokenHeaders = () => ({headers: {'Authorization': `Token ${localStorage.token}`}});
+const getAuthTokenHeaders = () => {
+    if (localStorage.token) {
+        return {headers: {'Authorization': `Token ${localStorage.token}`}}
+    }
+    return null
+};
 
 
 export const usersAPI = {
@@ -21,13 +26,16 @@ export const profileAPI = {
         return instance.patch(`users/update/`, {status: status}, getAuthTokenHeaders())
     },
     getPosts(userId) {
-        return instance.get(`posts/${userId}`)
+        return instance.get(`posts/${userId}/`, getAuthTokenHeaders())
     },
     createPost(text, authorId) {
         return instance.post('posts/create/', {text: text, author: authorId}, getAuthTokenHeaders())
     },
     deletePost(postId) {
         return instance.delete(`posts/delete/${postId}`, getAuthTokenHeaders())
+    },
+    like(postId) {
+        return instance.post(`posts/like/${postId}/`, {}, getAuthTokenHeaders())
     }
 };
 

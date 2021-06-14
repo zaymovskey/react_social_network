@@ -5,7 +5,7 @@ import { Field, Form } from 'react-final-form'
 
 const CreatePost = (props) => {
     if (props.authId !== props.profile.id) {
-        return <section><div className='section-title'>Посты</div></section>
+        return null
     }
     return (
         <section>
