@@ -39,7 +39,8 @@ let mapStateToProps = (state) => {
         postBody: state.profilePage.postBody,
         posts: state.profilePage.posts,
         profile: state.profilePage.profile,
-        authId: state.auth.id
+        authId: state.auth.id,
+        likeInProgress: state.profilePage.likeInProgress
     }
 };
 

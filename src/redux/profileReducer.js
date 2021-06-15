@@ -7,36 +7,25 @@ const UPDATE_PROFILE_STATUS = 'UPDATE_PROFILE_STATUS';
 const SET_POSTS = 'SET_POSTS';
 const REMOVE_POST = 'REMOVE_POST';
 const LIKE_UNLIKE = 'LIKE_UNLIKE';
+const TOGGLE_IS_LIKE_PROGRESS = 'TOGGLE_IS_LIKE_PROGRESS';
 
 let initialState = {
     profile: null,
     posts: [],
     postBody: '',
+    likeInProgress: false
 };
 
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST:
-            return {
-                ...state,
-                posts: [...state.posts,
-                    {
-                        ...action.postData
-                    }],
-                postBody: ''
-            };
+            return {...state, posts: [...state.posts, {...action.postData}], postBody: ''};
 
         case SET_USER_PROFILE:
-            return {
-                ...state,
-                profile: action.profile
-            };
+            return {...state, profile: action.profile};
 
         case UPDATE_POST_BODY:
-            return {
-                ...state,
-                postBody: action.body,
-            };
+            return {...state, postBody: action.body};
 
         case UPDATE_PROFILE_STATUS:
             const copy = {...state};
@@ -44,16 +33,10 @@ const profileReducer = (state = initialState, action) => {
             return copy;
 
         case SET_POSTS:
-            return {
-                ...state,
-                posts: action.posts
-            };
+            return {...state, posts: action.posts};
 
         case REMOVE_POST:
-            return {
-                ...state,
-                posts: state.posts.filter(post => post.id !== action.postId)
-            };
+            return {...state, posts: state.posts.filter(post => post.id !== action.postId)};
 
         case LIKE_UNLIKE:
             return {
@@ -73,6 +56,9 @@ const profileReducer = (state = initialState, action) => {
                 })
             };
 
+        case TOGGLE_IS_LIKE_PROGRESS:
+            return {...state, likeInProgress: action.isFetching};
+
         default:
             return state
     }
@@ -86,6 +72,7 @@ export const updateStatus = (status) => ({type: UPDATE_PROFILE_STATUS, status: s
 export const setPosts = (posts) => ({type: SET_POSTS, posts: posts});
 export const removePost = (postId) => ({type: REMOVE_POST, postId: postId});
 export const likeUnlike = (postId, action) => ({type: LIKE_UNLIKE, action: action, postId: postId});
+export const toggleLikeProgress = (isFetching) => ({type: TOGGLE_IS_LIKE_PROGRESS, isFetching: isFetching});
 
 // Thunk Creators
 export const getProfile = (userId) => (dispatch => {
@@ -121,8 +108,10 @@ export const deletePost = (postId) => (dispatch => {
 });
 
 export const like = (postId) => (dispatch => {
+    dispatch(toggleLikeProgress(true));
     profileAPI.like(postId).then(response => {
-        dispatch(likeUnlike(postId, response.data))
+        dispatch(likeUnlike(postId, response.data));
+        dispatch(toggleLikeProgress(false));
     })
 });
 

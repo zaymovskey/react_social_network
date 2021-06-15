@@ -36,19 +36,20 @@
 }
 
 .postText {
-    word-break: break-all;
+    word-break: break-word;
     margin-bottom: 10px;
+    padding-right: 25px;
 }
 
 .likes, .liked {
+    background-color: unset;
+    padding: 0;
     color: #a0a0a0;
     transition: 0.2s;
     font-size: 20px;
     font-weight: 600;
+    display: inline-block;
 }
 .liked {
     color: #ee5454;
-}
-.likes:hover, .liked:hover {
-    cursor: pointer;
 }

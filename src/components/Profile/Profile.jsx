@@ -10,7 +10,12 @@ const Profile = (props) => {
             <Loader/>
         )
     }
-    let postsElements = props.posts.map(el => <Post like={props.like} authId={props.authId} deletePost={props.deletePost} profile={props.profile} post={el}/>);
+    let postsElements = props.posts.map(el => <Post likeInProgress={props.likeInProgress}
+                                                    like={props.like}
+                                                    authId={props.authId}
+                                                    deletePost={props.deletePost}
+                                                    profile={props.profile}
+                                                    post={el}/>);
 
     return (
         <div className='profileWrapper'>

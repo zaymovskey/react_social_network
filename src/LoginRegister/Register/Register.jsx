@@ -12,7 +12,6 @@ const RegisterForm = (props) => {
                     password: formObj.password
                 }
             ).then(response => {
-                    debugger;
                 },
                 err => {
                     console.log(err)
