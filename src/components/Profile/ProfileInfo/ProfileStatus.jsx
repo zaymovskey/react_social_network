@@ -7,7 +7,7 @@ const ProfileStatus = (props) => {
 
     useEffect(() => {
         setStatus(props.status)
-    });
+    }, [props.status]);
 
     const onStatusChange = (e) => {
         setStatus(e.target.value)
