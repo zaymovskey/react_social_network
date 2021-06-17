@@ -81,15 +81,15 @@ export const getProfile = (userId) => (dispatch => {
     });
 });
 
-export const updateProfileStatus = (status) => (dispatch => {
-    profileAPI.updateProfileStatus(status).then(response => {
-        dispatch(updateStatus(response.data.status))
-    })
-});
-
 export const getProfilePosts = (userId) => (dispatch => {
     profileAPI.getPosts(userId).then(response => {
         dispatch(setPosts(response.data))
+    })
+});
+
+export const updateProfileStatus = (status) => (dispatch => {
+    profileAPI.updateProfileStatus(status).then(response => {
+        dispatch(updateStatus(response.data.status))
     })
 });
 

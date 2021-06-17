@@ -20,7 +20,7 @@ const ProfileInfo = (props) => {
                 <div className={styles.infoBlock}>
                     <div className={styles.nameBlock}>
                         <div className={styles.name}>{props.profile.first_name} {props.profile.last_name}</div>
-                        <ProfileStatus updateProfileStatus={props.updateProfileStatus} status={props.profile.status}/>
+                        <ProfileStatus authId={props.authId} profileId={props.profile.id} updateProfileStatus={props.updateProfileStatus} status={props.profile.status}/>
                     </div>
                     <div className="">
                         <div>Обо мне: {props.profile.bio}</div>

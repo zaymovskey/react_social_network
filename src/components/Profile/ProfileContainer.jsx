@@ -14,8 +14,7 @@ import {
 import {compose} from "redux";
 
 class ProfileContainer extends React.Component {
-
-    componentDidMount() {
+    refreshProfile() {
         let userId = this.props.match.params.userId;
         if (!userId) {
             userId = this.props.authId;
@@ -25,6 +24,16 @@ class ProfileContainer extends React.Component {
         }
         this.props.getProfile(userId);
         this.props.getProfilePosts(userId);
+    }
+
+    componentDidMount() {
+        this.refreshProfile()
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.props.match.params.userId !== prevProps.match.params.userId) {
+            this.refreshProfile()
+        }
     }
 
     render() {
@@ -40,7 +49,7 @@ let mapStateToProps = (state) => {
         posts: state.profilePage.posts,
         profile: state.profilePage.profile,
         authId: state.auth.id,
-        likeInProgress: state.profilePage.likeInProgress
+        likeInProgress: state.profilePage.likeInProgress,
     }
 };
 

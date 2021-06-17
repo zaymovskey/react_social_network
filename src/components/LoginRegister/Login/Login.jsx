@@ -3,7 +3,7 @@ import { Field, Form } from 'react-final-form'
 import React from "react";
 import {NavLink, Redirect} from "react-router-dom";
 import {connect} from "react-redux";
-import {login} from "../../redux/authReducer";
+import {login} from "../../../redux/authReducer";
 
 
 

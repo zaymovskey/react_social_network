@@ -20,7 +20,7 @@ const ProfileStatus = (props) => {
 
     return (
         <div>
-            {!editMode? <div onClick={activeEditMode}>{status}</div> :
+            {!editMode? <div onClick={props.authId === props.profileId? activeEditMode: null}>{status}</div> :
                 <input onChange={onStatusChange}
                        onBlur={deactivateEditMode}
                        autoFocus={true}

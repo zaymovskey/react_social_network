@@ -18,10 +18,7 @@ class UsersContainer extends React.Component {
     render() {
         return (
             <>
-                {this.props.isFetching? <Loader/>: <Users
-                    users={this.props.users}
-                    toggleFollow={this.props.toggleFollow}
-                />}
+                {this.props.isFetching? <Loader/>: <Users{...this.props}/>}
             </>
         )
     }

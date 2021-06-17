@@ -29,12 +29,12 @@ section {
 textarea {
     width: 100%;
     min-height: 80px;
-    border: 2px #84588d solid;
+    border: none;
     resize: none;
     padding: 10px;
     font-size: 15px;
     color: #2e2828;
-    background-color: whitesmoke;
+    background-color: #f0f0f0;
     box-sizing: border-box;
     border-radius: 2px;
     font-family: -apple-system,
