@@ -1,26 +1,18 @@
 import {Field, Form} from "react-final-form";
-import * as axios from "axios";
 import styles from "../Login/Login.module.css";
 import React from "react";
+import {register} from "../../../redux/authReducer";
+import {connect} from "react-redux";
+import Redirect from "react-router-dom/es/Redirect";
 
 const RegisterForm = (props) => {
     return (
         <Form onSubmit={(formObj) => {
-            axios.post('http://127.0.0.1:8000/auth/users/',
-                {
-                    username: formObj.login,
-                    password: formObj.password
-                }
-            ).then(response => {
-                },
-                err => {
-                    console.log(err)
-                }
-            )
+            props.register(formObj.username, formObj.password, formObj.phone, formObj.email)
         }}
               validate={values => {
                   const errors = {};
-                  if (!values.login) {
+                  if (!values.username) {
                       errors.login = 'Это поле обязательно'
                   }
                   if (!values.password) {
@@ -31,11 +23,27 @@ const RegisterForm = (props) => {
         >
             {({ handleSubmit }) => (
                 <form onSubmit={handleSubmit} className={styles.form}>
-                    <Field name={'login'}>
+                    <Field name={'username'}>
                         {({ input, meta }) =>
                             <div>
                                 {/*{meta.error && meta.touched && <span>{meta.error}</span>}*/}
                                 <input placeholder='Логин' className={styles.input} type='text' {...input}/>
+                            </div>
+                        }
+                    </Field>
+                    <Field name={'email'}>
+                        {({ input, meta }) =>
+                            <div>
+                                {/*{meta.error && meta.touched && <span>{meta.error}</span>}*/}
+                                <input placeholder='e-mail' className={styles.input} type='text' {...input}/>
+                            </div>
+                        }
+                    </Field>
+                    <Field name={'phone'}>
+                        {({ input, meta }) =>
+                            <div>
+                                {/*{meta.error && meta.touched && <span>{meta.error}</span>}*/}
+                                <input placeholder='Телефон' className={styles.input} type='text' {...input}/>
                             </div>
                         }
                     </Field>
@@ -55,14 +63,27 @@ const RegisterForm = (props) => {
 };
 
 const Register = (props) => {
+    if (props.isAuth) {
+        return <Redirect to={'profile/'}/>
+    }
     return (
         <div className={styles.loginWrapper}>
             <section className={styles.section}>
                 <div className='section-title'>Регистрация</div>
-                <RegisterForm/>
+                <RegisterForm register={props.register}/>
             </section>
         </div>
     )
 };
 
-export default Register
+class RegisterContainer extends React.Component {
+    render() {
+        return <Register {...this.props}/>
+    }
+}
+
+const mapStateToProps = (state) => ({
+    isAuth: state.auth.isAuth
+});
+
+export default connect(mapStateToProps, {register})(RegisterContainer)

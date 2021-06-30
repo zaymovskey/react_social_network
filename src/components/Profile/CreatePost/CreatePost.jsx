@@ -4,10 +4,6 @@ import { Field, Form } from 'react-final-form'
 
 
 const CreatePost = (props) => {
-    if (props.authId !== props.profile.id) {
-        return null
-    }
-
     return (
         <section>
             <div className='section-title'>Ваши посты</div>
@@ -25,7 +21,7 @@ const CreatePostForm = (props) => {
             }}
             render={({ handleSubmit }) => (
                 <form onSubmit={handleSubmit}>
-                    <Field name={"postText"} component="textarea" placeholder="Что нового, скотина?"/>
+                    <Field name={"postText"} component="textarea" placeholder="Что нового?"/>
                     <button type='submit'>Опубликовать</button>
                 </form>
             )}

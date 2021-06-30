@@ -10,7 +10,8 @@ const Profile = (props) => {
             <Loader/>
         )
     }
-    let postsElements = props.posts.map(post => <Post likeInProgress={props.likeInProgress}
+
+    let postElements = props.posts.map(post => <Post likeInProgress={props.likeInProgress}
                                                     like={props.like}
                                                     authId={props.authId}
                                                     deletePost={props.deletePost}
@@ -19,16 +20,17 @@ const Profile = (props) => {
 
     return (
         <div className='profileWrapper'>
-            <ProfileInfo authId={props.authId} profile={props.profile} updateProfileStatus={props.updateProfileStatus}/>
-            <CreatePost
+            <ProfileInfo isOwner={props.isOwner} authId={props.authId} profile={props.profile} updateProfileStatus={props.updateProfileStatus}/>
+            {props.isOwner? <CreatePost
                 posts={props.posts}
                 postBody={props.postBody}
                 createPost={props.createPost}
                 updatePostBody={props.updatePostBody}
                 authId={props.authId}
-                profile={props.profile}/>
+                profile={props.profile}/> : null}
 
-            {postsElements.reverse()}
+
+            {postElements.reverse()}
         </div>
     )
 };

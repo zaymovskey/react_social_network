@@ -3,6 +3,7 @@ import styles from "./ImportantFriends.module.css";
 import ImportantFriendItem from "./ImportantFriendsItem/ImportantFriendItem";
 
 const ImportantFriends = (props) => {
+    console.log('RENDER');
 
     let importantFriends = props.importantFriends.map((el) => <ImportantFriendItem importantFriend={el}/>);
 

@@ -38,6 +38,14 @@ export const setAuthUserData = (id, username, email, isAuth) => (
     });
 
 // Thunk Creators
+export const register = (username, password, phone, email) => (dispatch => {
+    authAPI.register(username, password, phone, email).then(response => {
+        debugger;
+    }).catch(error => {
+        console.log(error.response)
+    })
+});
+
 export const login = (username, password) => (dispatch => {
     authAPI.login(username, password).then(response => {
             if (response.status === 200) {

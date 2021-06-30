@@ -24,7 +24,7 @@ const ProfileStatus = (props) => {
 
     return (
         <div>
-            {!editMode? <div onClick={props.authId === props.profileId? activeEditMode: null}>{status}</div> :
+            {!editMode? <div onClick={props.isOwner? activeEditMode: null}>{status || 'Нет статуса'}</div> :
                 <input onChange={onStatusChange}
                        onBlur={deactivateEditMode}
                        autoFocus={true}

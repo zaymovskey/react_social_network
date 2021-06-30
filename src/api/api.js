@@ -40,6 +40,11 @@ export const profileAPI = {
 };
 
 export const authAPI = {
+    register(username, password, phone, email) {
+        debugger;
+        return instance.post('auth/users/', {username: username, password: password, phone: phone, email: email})
+    },
+
     login (username, password) {
         return instance.post('auth/token/login', {username: username, password: password})
     },

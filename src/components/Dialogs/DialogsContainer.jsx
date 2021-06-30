@@ -7,9 +7,7 @@ import {compose} from "redux";
 
 class DialogsContainer extends React.Component {
     render() {
-        return (
-            <Dialogs {...this.props}/>
-        )
+        return <Dialogs {...this.props}/>
     }
 }
 

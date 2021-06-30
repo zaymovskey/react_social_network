@@ -5,7 +5,7 @@ import {Route} from "react-router-dom";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
-import Register from "./components/LoginRegister/Register/Register";
+import RegisterContainer from "./components/LoginRegister/Register/Register";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import LoginContainer from "./components/LoginRegister/Login/Login";
 import {connect} from "react-redux";
@@ -32,7 +32,7 @@ class App extends Component {
                     <Route path='/profile/:userId?' render={() => <ProfileContainer store={this.props.store}/>}/>
                     <Route path='/users' render={() => <UsersContainer store={this.props.store}/>}/>
                     <Route path='/login' render={() => <LoginContainer store={this.props.store}/>}/>
-                    <Route path='/register' render={() => <Register store={this.props.store}/>}/>
+                    <Route path='/register' render={() => <RegisterContainer store={this.props.store}/>}/>
                 </div>
             </div>
         );
